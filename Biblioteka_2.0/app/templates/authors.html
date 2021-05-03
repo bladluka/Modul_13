@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tu tworzymy autora i widzimy listę</title>
+    <style>
+        table, th, tr, td {border: 1px solid black;}
+    </style>
+</head>
+
+<body>
+
+<h2>Lista autorów</h2>
+ <form action="/authors/" method="post">
+        <p><input type="text" name="name" placeholder="Autor..."></p>
+        <input type="submit" value="Dodaj autora">
+    </form>
+<p><a href="/books/">>>> Przejdź do listy książek</a></p>
+
+<table>
+    <thead>
+     <th>Autor</th>
+    </thead>
+{% for author in authors %}
+    <tr>
+        <td>{{ author.name }}</td>
+        <td><a href="/authors/delete/{{ author.id }}">Usuń</td>
+    </tr>
+{% endfor %}
+</table>
+</body>

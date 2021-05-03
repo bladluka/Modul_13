@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modyfikacja książki</title>
+    <style>
+        table, th, tr, td {border: 1px solid black;}
+    </style>
+</head>
+<body>
+ <h2>Edytuj książkę</h2>
+<p><a href="/books/">>>> Wróć do listy książek</a></p>
+<form method="POST" action="/books/{{ book.id }}">
+    <table>
+             <tr>
+                 <th>Tytuł</th>
+                 <td>{{ book.title }}</td>
+                 <td><input type="text" name="title" placeholder="Nowy tytuł..."></td>
+                 <td> <<< Podaj nowy tytuł</td>"
+             </tr>
+             <tr>
+                 <th>Autor</th>
+                 <td>{{ book.authors }}</td>
+                 <td><select name="author">
+                     <option value=0></option>
+                     {% for Author in Authors %}
+                     <option value={{ Author.id }}>{{ Author.name }}</option>
+                     {% endfor %}
+                     </select></td>
+                 <td> <<< Dodaj autora wybierająć z listy</td>
+             </tr>
+             <tr>
+                 <th>Czy tytuł dostępny</th>
+                 <td>{{ book.stock[-1] }}</td>
+             </tr>
+         </table><br>
+         <input type="submit" value="Zatwierdź">
+
+
+     </form>
+<p><a href="/authors/">>>> Przejdź do listy autorów żeby dodać autora gdy nie ma go na liście</a></p>
+</body>
+</html>
